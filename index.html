@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIT Sindri Lab Manual & AI Assignment Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f6ff',
+                            100: '#e0edff',
+                            500: '#1E51A4',
+                            600: '#18428a',
+                            700: '#12336e',
+                        },
+                        maroon: {
+                            600: '#B23A48',
+                            700: '#922b37',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 20mm 20mm 20mm;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            position: relative;
+            color: #111827;
+            box-sizing: border-box;
+        }
+
+        .markdown-content h1 { font-size: 1.5rem; font-weight: 800; margin-top: 1rem; margin-bottom: 0.5rem; color: #1E51A4; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.25rem; }
+        .markdown-content h2 { font-size: 1.25rem; font-weight: 700; margin-top: 1rem; margin-bottom: 0.5rem; color: #1f2937; }
+        .markdown-content h3 { font-size: 1.1rem; font-weight: 600; margin-top: 0.75rem; margin-bottom: 0.25rem; color: #374151; }
+        .markdown-content p { margin-bottom: 0.75rem; line-height: 1.6; font-size: 0.95rem; }
+        .markdown-content ul, .markdown-content ol { margin-left: 1.5rem; margin-bottom: 0.75rem; list-style-type: disc; }
+        .markdown-content code { background-color: #f3f4f6; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
+        .markdown-content pre { background-color: #1e293b; color: #f8fafc; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 1rem; }
+        .markdown-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.9rem; }
+        .markdown-content th, .markdown-content td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }
+        .markdown-content th { background-color: #f3f4f6; font-weight: 600; }
+
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .a4-page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                max-height: 297mm !important;
+                padding: 15mm 20mm 15mm 20mm !important;
+                page-break-after: avoid !important;
+                page-break-inside: avoid !important;
+                box-sizing: border-box !important;
+                overflow: hidden !important;
+            }
+            #view-cover-content {
+                height: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+            }
+            .app-container {
+                display: block !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen antialiased flex flex-col">
+
+    <header class="no-print bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div>
+                    <h1 class="font-bold text-lg leading-tight flex items-center gap-2">
+                        BIT Sindri Lab Hub
+                        <span class="bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text text-xs font-semibold px-2 py-0.5 rounded-full border border-blue-500/30">
+                            <i class="fa-solid fa-sparkles text-blue-400 mr-1"></i>Gemini AI Powered
+                        </span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Lab Manual Cover Generator & AI Assignment Studio</p>
+                </div>
+            </div>
+            <!-- Actions -->
+            <div class="flex items-center space-x-2">
+                <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center transition shadow-sm">
+                    <i class="fa-solid fa-print mr-1.5"></i> Print / PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="app-container flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- LEFT SIDE: Controls & AI Assistants -->
+        <div class="no-print lg:col-span-5 space-y-5">
+            
+            <!-- SECTION 1: Cover Page Controls (Visible when on Cover tab) -->
+            <div id="section-cover-inputs" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <h2 class="font-bold text-slate-800 text-base flex items-center">
+                        <i class="fa-solid fa-pen-to-square text-brand-500 mr-2"></i>Cover Page Details
+                    </h2>
+                    <button onclick="autoFillBitSindri()" class="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-2.5 py-1 rounded-md font-medium transition flex items-center">
+                        <i class="fa-solid fa-magic mr-1"></i> Auto-fill (BIT OS Lab)
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="sm:col-span-2">
+                        <label class="block font-semibold text-slate-700 mb-1">College Header Title</label>
+                        <input type="text" id="input-college" value="BIT SINDRI, DHANBAD" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none font-semibold text-slate-800">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Academic Session</label>
+                        <input type="text" id="input-session" value="Session: 2024-28" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Semester</label>
+                        <select id="input-semester" onchange="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                             <option value="1st">1st Semester</option>
+                                    <option value="2nd">2nd Semester</option>
+                                    <option value="3rd">3rd Semester</option>
+                                    <option value="4th" selected>4th Semester</option>
+                                    <option value="5th">5th Semester</option>
+                                    <option value="6th">6th Semester</option>
+                                    <option value="7th">7th Semester</option>
+                                    <option value="8th">8th Semester</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label class="block font-semibold text-slate-700 mb-1">Lab Manual / Assignment Title</label>
+                        <input type="text" id="input-manual" value="LAB MANUAL OF OPERATING SYSTEM" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none uppercase font-bold text-slate-800">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Student Name</label>
+                        <input type="text" id="input-name" placeholder="Enter Your Name" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none font-medium">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Branch</label>
+                        <input type="text" id="input-branch" placeholder="e.g. Information Technology" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Roll Number</label>
+                        <input type="text" id="input-roll" placeholder="e.g. 2311003" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Registration Number</label>
+                        <input type="text" id="input-reg" placeholder="e.g. 23030480049" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label class="block font-semibold text-slate-700 mb-1">Professor Name</label>
+                        <input type="text" id="input-prof" value="PROF. VIKASH KUMAR SINGH" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <!-- Theme Color Selector -->
+                <div class="pt-2">
+                    <label class="block font-semibold text-slate-700 mb-1.5 text-xs">Primary Color Theme</label>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="setTheme('#1E51A4', '#B23A48')" class="w-7 h-7 rounded-full bg-[#1E51A4] ring-2 ring-offset-2 ring-blue-500 focus:outline-none" title="Standard Blue/Crimson"></button>
+                        <button onclick="setTheme('#0f766e', '#b91c1c')" class="w-7 h-7 rounded-full bg-[#0f766e] hover:scale-105 transition focus:outline-none" title="Emerald/Red"></button>
+                        <button onclick="setTheme('#4338ca', '#d97706')" class="w-7 h-7 rounded-full bg-[#4338ca] hover:scale-105 transition focus:outline-none" title="Indigo/Amber"></button>
+                        <button onclick="setTheme('#111827', '#4b5563')" class="w-7 h-7 rounded-full bg-[#111827] hover:scale-105 transition focus:outline-none" title="Monochrome Classic"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: Live A4 Printable Preview -->
+        <div class="lg:col-span-7 flex flex-col items-center">
+            
+            <div class="no-print w-full flex items-center justify-between mb-3 px-1 text-xs font-medium text-slate-500">
+                <span><i class="fa-solid fa-eye mr-1"></i> Live Printable Document View (A4 Format)</span>
+                <span id="preview-mode-badge" class="bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-full font-semibold">Cover Page Mode</span>
+            </div>
+
+            <!-- Document Sheet -->
+            <div id="printable-a4" class="a4-page flex flex-col items-center justify-between shadow-2xl transition-all duration-300">
+                
+                <!-- COVER PAGE VIEW (Dynamic Binding) -->
+                <div id="view-cover-content" class="w-full flex flex-col items-center justify-between h-full py-1">
+                    
+                    <div class="w-full text-center space-y-3 flex flex-col items-center">
+                        
+                        <!-- Official BIT Sindri Crest Logo (Increased Size) -->
+                        <div id="logo-container" class="my-2 flex justify-center items-center">
+                            <div class="w-60 h-60 relative flex items-center justify-center">
+                                <img
+                                    id="cover-logo"
+                                    src="./images/images.png"
+                                    class="w-full h-full object-contain"
+                                    alt="BIT Sindri Logo"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Main College Title (Increased Font Size & Centered) -->
+                        <div id="preview-college" class="text-4xl sm:text-5xl font-black tracking-wider uppercase transition-colors" style="color: #1E51A4;">
+                            BIT SINDRI, DHANBAD
+                        </div>
+
+                        <!-- Academic Session -->
+                        <div id="preview-session" class="text-lg font-bold text-slate-700 tracking-wide">
+                            Session: 2024-28
+                        </div>
+
+                        <!-- Manual / Subject Title -->
+                        <div class="pt-5 pb-1">
+                            <div id="preview-manual" class="text-xl sm:text-2xl font-extrabold text-slate-900 uppercase border-b-2 border-slate-900 pb-1.5 inline-block tracking-wider px-6">
+                                LAB MANUAL OF OPERATING SYSTEM
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Section Table (Red Labels, Black Values, Centered Layout) -->
+                    <div class="w-full max-w-lg mx-auto my-11 pt-8 pb-3 px-5">
+                        <table class="w-full border-collapse text-left text-base font-semibold tracking-wide">
+                            <tbody>
+                                <tr class="h-10 border-b border-slate-100">
+                                    <td class="w-44 text-maroon-600 font-extrabold" style="color: #B23A48;">NAME</td>
+                                    <td class="w-6 text-center font-bold" style="color: #B23A48;">:</td>
+                                    <td id="preview-name" class="font-bold text-black uppercase">ENTER YOUR NAME</td>
+                                </tr>
+                                <tr class="h-10 border-b border-slate-100">
+                                    <td class="w-44 text-maroon-600 font-extrabold" style="color: #B23A48;">BRANCH</td>
+                                    <td class="w-6 text-center font-bold" style="color: #B23A48;">:</td>
+                                    <td id="preview-branch" class="font-bold text-black uppercase">INFORMATION TECHNOLOGY</td>
+                                </tr>
+                                <tr class="h-10 border-b border-slate-100">
+                                    <td class="w-44 text-maroon-600 font-extrabold" style="color: #B23A48;">ROLL. NO.</td>
+                                    <td class="w-6 text-center font-bold" style="color: #B23A48;">:</td>
+                                    <td id="preview-roll" class="font-bold text-black uppercase">2311003</td>
+                                </tr>
+                                <tr class="h-10 border-b border-slate-100">
+                                    <td class="w-44 text-maroon-600 font-extrabold" style="color: #B23A48;">REG. NO.</td>
+                                    <td class="w-6 text-center font-bold" style="color: #B23A48;">:</td>
+                                    <td id="preview-reg" class="font-bold text-black uppercase">23030480049</td>
+                                </tr>
+                                <tr class="h-10 border-b border-slate-100">
+                                    <td class="w-44 text-maroon-600 font-extrabold" style="color: #B23A48;">SEMESTER</td>
+                                    <td class="w-6 text-center font-bold" style="color: #B23A48;">:</td>
+                                    <td id="preview-semester" class="font-bold text-black uppercase">-</td>
+                                </tr>
+                                <tr class="h-10">
+                                    <td class="w-44 text-maroon-600 font-extrabold" style="color: #B23A48;">PROF. NAME</td>
+                                    <td class="w-6 text-center font-bold" style="color: #B23A48;">:</td>
+                                    <td id="preview-prof" class="font-bold text-black uppercase">PROF. VIKASH KUMAR SINGH</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Signature Area (Pinned to Bottom of Page) -->
+                    <div class="w-full flex justify-between items-end pt-8 pb-2 px-4 mt-auto">
+                        <div class="w-48 text-center">
+                            <div class="border-t-2 border-slate-400 mb-1.5"></div>
+                            <div class="text-xs font-bold text-slate-700 uppercase tracking-wider">Student Signature</div>
+                        </div>
+                        <div class="w-48 text-center">
+                            <div id="preview-sig-line" class="border-t-2 mb-1.5" style="border-color: #B23A48;"></div>
+                            <div id="preview-sig-text" class="text-xs font-bold uppercase tracking-wider" style="color: #B23A48;">Evaluator Sign</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        let currentThemePrimary = '#1E51A4';
+        let currentThemeAccent = '#B23A48';
+
+        // Custom logo URL updater
+        function updateLogo() {
+            const logoUrl = document.getElementById('input-logo-url').value.trim();
+            const svgLogo = document.getElementById('cover-logo-img');
+            const customImg = document.getElementById('cover-logo-custom-img');
+            
+            if (logoUrl) {
+                customImg.classList.remove('hidden');
+                svgLogo.classList.add('hidden');
+            } else {
+                customImg.classList.add('hidden');
+                svgLogo.classList.remove('hidden');
+            }
+        }
+
+        // File upload logo handler
+        function handleLogoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const dataUrl = e.target.result;
+                    document.getElementById('input-logo-url').value = dataUrl;
+                    updateLogo();
+                    showToast('Custom Logo uploaded successfully!');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Auto-fill preset for BIT Sindri Operating System Lab
+        function autoFillBitSindri() {
+            document.getElementById('input-college').value = 'BIT SINDRI, DHANBAD';
+            document.getElementById('input-session').value = 'Session: 2024-28';
+            document.getElementById('input-manual').value = 'LAB MANUAL OF OPERATING SYSTEM';
+            document.getElementById('input-semester').value = '4th';
+            document.getElementById('input-prof').value = 'PROF. VIKASH KUMAR SINGH';
+            document.getElementById('input-branch').value = 'INFORMATION TECHNOLOGY';
+            
+            updatePreview();
+            showToast('Auto-filled BIT Sindri OS Lab Details!');
+        }
+
+        // Live preview update
+        function updatePreview() {
+            const college = document.getElementById('input-college').value;
+            const session = document.getElementById('input-session').value;
+            const manual = document.getElementById('input-manual').value;
+            const name = document.getElementById('input-name').value;
+            const branch = document.getElementById('input-branch').value;
+            const roll = document.getElementById('input-roll').value;
+            const reg = document.getElementById('input-reg').value;
+            const sem = document.getElementById('input-semester').value;
+            const prof = document.getElementById('input-prof').value;
+
+            document.getElementById('preview-college').innerText = college || 'BIT SINDRI, DHANBAD';
+            document.getElementById('preview-session').innerText = session || 'Session: 2024-28';
+            document.getElementById('preview-manual').innerText = manual || 'LAB MANUAL';
+            document.getElementById('preview-name').innerText = name || 'YOUR NAME HERE';
+            document.getElementById('preview-branch').innerText = branch || 'INFORMATION TECHNOLOGY';
+            document.getElementById('preview-roll').innerText = roll || '—';
+            document.getElementById('preview-reg').innerText = reg || '—';
+            document.getElementById('preview-semester').innerText = sem ? sem.toUpperCase() : '—';
+            document.getElementById('preview-prof').innerText = prof || '—';
+        }
+
+        // Theme setter
+        function setTheme(primary, accent) {
+            currentThemePrimary = primary;
+            currentThemeAccent = accent;
+
+            document.getElementById('preview-college').style.color = primary;
+            
+            const accentElems = [
+                document.getElementById('preview-presented-by'),
+                document.getElementById('preview-sig-text')
+            ];
+            accentElems.forEach(el => { if(el) el.style.color = accent; });
+
+            const table = document.querySelector('#view-cover-content table');
+            if (table) table.style.color = accent;
+
+            document.getElementById('preview-sig-line').style.borderColor = accent;
+            showToast('Applied Color Theme');
+        }
+
+        // Toggle custom prompt dropdown
+        document.getElementById('ai-topic-select').addEventListener('change', function(e) {
+            const customContainer = document.getElementById('custom-prompt-container');
+            if (e.target.value === 'custom') {
+                customContainer.classList.remove('hidden');
+            } else {
+                customContainer.classList.add('hidden');
+            }
+        });
+        function simpleMarkdownToHtml(md) {
+            let html = md
+                .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^\* (.*$)/gim, '<ul><li>$1</li></ul>')
+                .replace(/^\- (.*$)/gim, '<ul><li>$1</li></ul>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n\n/g, '<br/><br/>');
+            return html;
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            updatePreview();
+        };
+    </script>
+</body>
+</html>
